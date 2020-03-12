@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+Viết một chương trình JavaScript để tìm một giá tri được nhập vào từ hộp thoại có nằm trong mảng hay không.
+Nếu có in ra vị trí của phần tử đó
+-->
+<script>
+    let a = prompt("Nhập số");
+    let x = ["12", "18", "26", "-5", "-10", "80", "42"];
+    for (let i = 0; i < x.length - 1; i++) {
+        if (a === x[i]) {
+            alert("Số " + x[i] + " tìm được ở vị trí thứ " + i);
+        }
+    }
+</script>
+</body>
+</html>
