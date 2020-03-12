@@ -1,8 +1,8 @@
 function caroTable() {
     let result = "";
-    for (let i = 1; i <= 9; i++) {
+    for (let i = 1; i <= 8; i++) {
         result += "<tr>";
-        for (let j = 1; j <= 9; j++) {
+        for (let j = 1; j <= 8; j++) {
             let table = i + j;
             if (table % 2 === 0) {
                 result += "<td onclick='clickCell(this)' style='background-color: white'></td>";
