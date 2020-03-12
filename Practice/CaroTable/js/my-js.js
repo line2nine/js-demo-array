@@ -12,7 +12,7 @@ function caroTable() {
         }
         result += "</tr>";
     }
-    document.getElementById("showMultiTable").innerHTML = result;
+    document.getElementById("showCaroTable").innerHTML = result;
 }
 
 let turn = 1;
@@ -26,5 +26,5 @@ function clickCell(cell) {
             cell.innerHTML = "O";
             turn = 1;
         }
-    }
+    } else alert("Wait your turn");
 }
