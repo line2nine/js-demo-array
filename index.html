@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+Nhập số phần tử của mảng và sinh ngẫu nhiên mảng. Tính tổng các phần tử. => Done
+Tính tổng các số chẵn, số lẻ, số chính phương, số nguyên tố => Done
+Sắp xếp mảng theo thứ tự tăng dần => Done
+** Sắp xếp mảng sao cho các số lẻ tăng dần và các số chẵn giảm dần
+-->
+<script>
+    let count = 0;
+    let array = [];
+    let arrayOdd = [];
+    let arrayEven = [];
+    count = +prompt("Nhập số phần tử");
+    addElement(count);
+    splitArray();
+    // showArray();
+    arrayOdd = increaseArray(arrayOdd);
+    arrayEven = decreaseArray(arrayEven);
+    console.log(joinArray(arrayOdd, arrayEven));
+    // console.log("Các phần tử chẵn: " + arrayOdd);
+    // console.log("Các phần tử lẻ: " + arrayEven);
+    console.log("Tổng các phần tử: " + calSum());
+    console.log("Tổng các số chẵn: " + calSumEven());
+    console.log("Tổng các số lẻ: " + calSumOdd());
+    console.log("Tổng các số chính phương: " + calSquareNumber());
+    console.log("Tổng các số nguyên tố: " + calPrimeNumber());
+
+    function addElement(count) {
+        for (let i = 0; i < count; i++) {
+            array.push(Math.floor(Math.random() * 100));
+        }
+    }
+
+    // ------------Sắp xếp mảng theo thứ tự tăng dần--------------
+    // function showArray() {
+    //     for (let i = 0; i < array.length; i++) {
+    //         array.sort(function (a, b) {
+    //             return a  - b
+    //         });
+    //         console.log(array[i]);
+    //     }
+    // }
+
+    // ----------Tách mảng--------------------
+    function splitArray() {
+        for (let i = 0; i < array.length; i++) {
+            (array[i] % 2 === 0) ? arrayOdd.push(array[i]) : arrayEven.push(array[i]);
+        }
+    }
+
+    // -----------Sắp xếp tăng dần--------------
+    function increaseArray(arr) {
+        arr.sort(function (a, b) {
+            return a - b;
+        });
+        return arr;
+    }
+
+    // -----------Sắp xếp giảm dần--------------
+    function decreaseArray(arr) {
+        arr.sort(function (a, b) {
+            return b - a;
+        });
+        return arr;
+    }
+
+    // ------------Nối các phần tử của 2 mảng-------
+    function joinArray(arr1, arr2) {
+        return arr1.concat(arr2);
+    }
+
+    function calSum() {
+        let sum = 0;
+        for (let i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        return sum;
+    }
+
+    function calSumEven() {
+        let sum = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] % 2 === 0) {
+                sum += array[i];
+            }
+        }
+        return sum;
+    }
+
+    function calSumOdd() {
+        let sum = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] % 2 !== 0) {
+                sum += array[i];
+            }
+        }
+        return sum;
+    }
+
+    function calSquareNumber() {
+        let sum = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (Number.isInteger(Math.sqrt(array[i]))) {
+                sum += array[i];
+            }
+        }
+        return sum;
+    }
+
+    function calPrimeNumber() {
+        let sum = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (checkIfPrimeNumber(array[i])) {
+                sum += array[i];
+            }
+        }
+        return sum;
+    }
+
+    function checkIfPrimeNumber(n) {
+        if (n < 2)
+            return false;
+        for (let i = 2; i <= Math.sqrt(n); i++)
+            if (n % i === 0)
+                return false;
+        return true;
+    }
+</script>
+</body>
+</html>

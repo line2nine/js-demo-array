@@ -1,0 +1,15 @@
+.container {
+    text-align: center;
+}
+
+button {
+    margin: 20px;
+}
+
+#transFrom {
+    margin-right: 100px;
+}
+
+#transTo {
+    margin-left: 100px;
+}
