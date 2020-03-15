@@ -5,6 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-
+<script>
+    let array = [-3, 4, 5, -2, 11, 23];
+    let multi = [];
+    let i;
+    for (i = 1; i < array.length; i++) {
+        multi.push((array[i - 1] * array[i]))
+    }
+    let max = multi[0];
+    let index = 0;
+    for (let j = 1; j < multi.length; j++) {
+        if (multi[j] > max) {
+            max = multi[j];
+            index = j;
+        }
+    }
+    console.log(max);
+</script>
 </body>
 </html>
