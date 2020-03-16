@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mảng nhiều chiều</title>
+</head>
+<!--
+Nhập số phần tử mỗi chiều của mảng 2 chiều
+Khởi tạo giá trị giá trị cho mảng
+Hiện mảng
+Tính tổng hàng/tổng cột
+Tìm các giá trị chẵn lẻ/chính phương/nguyên tố
+Sắp xếp mảng theo chiều GIẢM DẦN, từ trái qua phải, trên xuống dưới
+Sắp xếp mảng theo tổng hàng, tổng cột
+-->
+<body>
+<script>
+    let myArray;
+    let nRow, nColumn;
+
+    function initArray() {
+        nRow = +prompt("Nhập số dòng: ");
+        nColumn = +prompt("Nhập số cột: ");
+        myArray = new Array(nRow);
+        for (let i = 0; i < nRow; i++) {
+            myArray[i] = new Array(nColumn);
+            for (let j = 0; j < nColumn; j++) {
+                myArray[i][j] = Math.round(Math.random() * 100);
+            }
+        }
+    }
+
+    function showArray() {
+        document.write("<table border ='1' style='text-align: center'>");
+        for (let i = 0; i < nRow; i++) {
+            document.write("<tr>");
+            for (let j = 0; j < nColumn; j++) {
+                document.write("<td width='50'>"  + myArray[i][j] + "</td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    }
+
+    function calRowSum(rowIndex) {
+        if (rowIndex < 0 || rowIndex >= nRow) {
+            return 0;
+        }
+        let sum = 0;
+        for (let i = 0; i < nColumn; i++) {
+            sum += myArray[rowIndex][i];
+        }
+        return sum;
+    }
+
+    function calColumnSum(columnIndex) {
+        if (columnIndex < 0 || columnIndex >= nColumn) {
+            return 0;
+        }
+        let sum = 0;
+        for (let i = 0; i < nRow; i++) {
+            sum += myArray[i][columnIndex];
+        }
+        return sum;
+    }
+
+    function calEven() {
+        let sum = 0;
+        for (let i = 0; i < nRow; i++) {
+            for (let j = 0; j < nColumn; j++) {
+                if (myArray[i][j] % 2 === 0) {
+                    sum += myArray[i][j];
+                }
+            }
+        }
+        return sum;
+    }
+
+    function calOdd() {
+        let sum = 0;
+        for (let i = 0; i < nRow; i++) {
+            for (let j = 0; j < nColumn; j++) {
+                if (myArray[i][j] % 2 !== 0) {
+                    sum += myArray[i][j];
+                }
+            }
+        }
+        return sum;
+    }
+
+    function calSquare() {
+        let sum = 0;
+        for (let i = 0; i < nRow; i++) {
+            for (let j = 0; j < nColumn; j++) {
+                if (Number.isInteger(Math.sqrt(myArray[i][j]))) {
+                    sum += myArray[i][j];
+                }
+            }
+        }
+        return sum;
+    }
+
+    function calPrime() {
+        let sum = 0;
+        for (let i = 0; i < nRow; i++) {
+            for (let j = 0; j < nColumn; j++) {
+                if (checkIfPrimeNumber(myArray[i][j])) {
+                    sum += myArray[i][j];
+                }
+            }
+        }
+        return sum;
+    }
+
+    function checkIfPrimeNumber(n) {
+        if (n < 2)
+            return false;
+        for (let i = 2; i <= Math.sqrt(n); i++)
+            if (n % i === 0)
+                return false;
+        return true;
+    }
+
+    function sort() {
+        document.write("<table border ='1' style='text-align: center'>");
+        for (let i = 0; i < nRow; i++) {
+            document.write("<tr>");
+            for (let j = 0; j < nColumn; j++) {
+                myArray.sort(function (a, b) {
+                    return b[i][j] - a[i][j];
+                });
+                document.write("<td width='50'>"  + myArray[i][j] + "</td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    }
+
+    function sortByRow() {
+        document.write("<table border ='1' style='text-align: center'>");
+        for (let i = 0; i < nRow; i++) {
+            document.write("<tr>");
+            myArray.sort(function (a, b) {
+                return b[i] - a[i];
+            });
+            for (let j = 0; j < nColumn; j++) {
+
+                document.write("<td width='50'>"  + myArray[i][j] + "</td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    }
+
+    function sortByColumn() {
+        document.write("<table border ='1' style='text-align: center'>");
+        for (let i = 0; i < nRow; i++) {
+            document.write("<tr>");
+            for (let j = 0; j < nColumn; j++) {
+                myArray.sort(function (a, b) {
+                    return b[j] - a[j];
+                });
+                document.write("<td width='50'>"  + myArray[i][j] + "</td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    }
+
+    initArray();
+    //showArray();
+    //sort();
+    sortByColumn();
+    //sortByRow();
+    document.write("<br>" + "Tổng hàng 0 là " + calRowSum(0) + "<br>");
+    document.write("Tổng cột 0 là " + calColumnSum(0) + "<br>");
+    document.write("Tổng các phần tử chẵn là " + calEven() + "<br>");
+    document.write("Tổng các phần tử lẻ là " + calOdd() + "<br>");
+    document.write("Tổng các số chính phương là " + calSquare() + "<br>");
+    document.write("Tổng các số nguyên tố là " + calPrime() + "<br>");
+</script>
+</body>
+</html>
