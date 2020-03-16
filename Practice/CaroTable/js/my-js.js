@@ -45,6 +45,9 @@ function checkWinner(cell, x, o) {
     var i = 1;
     var count = 1;
     var j = 1;
+    var m = 1;
+    var n = 1;
+    var count2 = 1;
     while ((o + i) < column && array[x][o + i] === cell.innerHTML) {
         i++;
         count++;
@@ -72,34 +75,26 @@ function checkWinner(cell, x, o) {
 
     //Diagonal Left to Right
 
-    while ((o + j < column) && (x + i < row) && (array[x + i][o + j] === cell.innerHTML)) {
-        i++;
-        j++;
-        count++;
+    while ((o + n < column) && (x + m < row) && (array[x + m][o + n] === cell.innerHTML)) {
+        m++;
+        n++;
+        count2++;
     }
-    endGame(count);
 
-    while ((o - j >= 0) && (x - i >= 0) && (array[x - i][o - j] === cell.innerHTML)) {
-        i++;
-        j++;
-        count++;
+    while ((o - n >= 0) && (x - m >= 0) && (array[x - m][o - n] === cell.innerHTML)) {
+        m++;
+        n++;
+        count2++;
     }
-    endGame(count);
-
-    while ((o - j >= 0) && (x + i < row) && (array[x + i][o - j] === cell.innerHTML)) {
-        i++;
-        j++;
-        count++;
-    }
-    endGame(count);
+    endGame(count2);
 
     //Diagonal Right to Left
-    while ((o + j < column) && (x - i >= 0) && (array[x - i][o + j] === cell.innerHTML)) {
-        i++;
-        j++;
-        count++;
+    while ((o + n < column) && (x - m >= 0) && (array[x - m][o + n] === cell.innerHTML)) {
+        m++;
+        n++;
+        count2++;
     }
-    endGame(count);
+    endGame(count2);
 
     return true;
 }
