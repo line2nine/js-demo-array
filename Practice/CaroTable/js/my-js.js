@@ -34,12 +34,12 @@ function clickCell(cell, x, o) {
             turn = 1;
             array[x][o] = "O";
         }
-    }
-    checkWin(cell, x, o);
+    } else alert("Wait your turn");
+    checkWinner(cell, x, o);
 }
 
 //-----Check Winner-----
-function checkWin(cell, x, o) {
+function checkWinner(cell, x, o) {
 
     //Horizontal Check
     let i = 1;
