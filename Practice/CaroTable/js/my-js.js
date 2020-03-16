@@ -42,13 +42,14 @@ function clickCell(cell, x, o) {
 function checkWinner(cell, x, o) {
 
     //Horizontal Check
-    let i = 1;
-    let count = 1;
-    let j = 1;
+    var i = 1;
+    var count = 1;
+    var j = 1;
     while ((o + i) < column && array[x][o + i] === cell.innerHTML) {
         i++;
         count++;
     }
+
 
     while (o - j >= 0 && array[x][o - j] === cell.innerHTML) {
         j++;
@@ -71,7 +72,9 @@ function checkWinner(cell, x, o) {
     endGame(count);
 
     //Diagonal Left to Right
-
+    var i = 1;
+    var count = 1;
+    var j = 1;
     while ((o + j < column) && (x + i < row) && (array[x + i][o + j] === cell.innerHTML)) {
         i++;
         j++;
@@ -79,6 +82,9 @@ function checkWinner(cell, x, o) {
     }
     endGame(count);
 
+    var i = 1;
+    var count = 1;
+    var j = 1;
     while ((o - j >= 0) && (x - i >= 0) && (array[x - i][o - j] === cell.innerHTML)) {
         i++;
         j++;
@@ -86,6 +92,9 @@ function checkWinner(cell, x, o) {
     }
     endGame(count);
 
+    var i = 1;
+    var count = 1;
+    var j = 1;
     while ((o - j >= 0) && (x + i < row) && (array[x + i][o - j] === cell.innerHTML)) {
         i++;
         j++;
@@ -94,6 +103,9 @@ function checkWinner(cell, x, o) {
     endGame(count);
 
     //Diagonal Right to Left
+    var i = 1;
+    var count = 1;
+    var j = 1;
     while ((o + j < column) && (x - i >= 0) && (array[x - i][o + j] === cell.innerHTML)) {
         i++;
         j++;
